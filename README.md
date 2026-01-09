@@ -1,50 +1,149 @@
-# Welcome to your Expo app 👋
+# Premier App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Application mobile React Native / Expo avec navigation par onglets en bas de l'écran.
 
-## Get started
+## 📱 Aperçu
 
-1. Install dependencies
+Cette application démontre une implémentation de la **navigation par onglets** avec React Navigation, comprenant deux écrans principaux :
 
+- **Connexion** : Écran de connexion avec formulaire (email, mot de passe) et interface moderne
+- **Bienvenue** : Écran d'accueil affiché après connexion
+
+## ✨ Fonctionnalités
+
+- Navigation par onglets en bas de l'écran
+- **Écran Connexion** :
+  - Champs : Adresse email et Mot de passe
+  - Bouton « Se connecter »
+  - Lien « Mot de passe oublié ? »
+  - Bouton « Créer un compte »
+  - Design moderne avec thème sombre (indigo/violet)
+- **Écran Bienvenue** :
+  - Message de bienvenue
+  - Carte d'information
+  - Liste des fonctionnalités
+- Interface adaptative avec `KeyboardAvoidingView` et `ScrollView`
+- Palette de couleurs harmonisée sur tous les écrans
+
+## 🛠️ Technologies
+
+- **React Native** — Framework mobile multiplateforme
+- **Expo** — Plateforme de développement et déploiement
+- **React Navigation** — Gestion de la navigation
+  - `@react-navigation/native` — Navigation de base
+  - `@react-navigation/bottom-tabs` — Navigation par onglets
+
+## 📋 Prérequis
+
+- **Node.js** (version 18 ou supérieure recommandée)
+- **npm** ou **yarn**
+- **Expo CLI** : `npm install -g expo-cli`
+- **Expo Go** (sur appareil physique) ou **émulateur** (Android Studio / Xcode)
+
+## 🚀 Installation
+
+1. **Accéder au projet**
+   ```bash
+   cd premier-app
+   ```
+
+2. **Installer les dépendances**
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. **Lancer l'application**
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. **Ouvrir l'application**
+   - **Android** : Appuyez sur `a` dans le terminal ou scannez le code QR avec Expo Go
+   - **iOS** : Appuyez sur `i` dans le terminal (simulateur) ou scannez avec l'appareil photo
+   - **Web** : Appuyez sur `w` dans le terminal
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### Commandes utiles
 
 ```bash
-npm run reset-project
+# Démarrer en vidant le cache (en cas de problème)
+npx expo start --clear
+
+# Lancer directement sur Android
+npm run android
+
+# Lancer directement sur iOS
+npm run ios
+
+# Lancer sur le web
+npm run web
+
+# Vérifier le code (analyse statique)
+npm run lint
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 📁 Structure du projet
 
-## Learn more
+```
+premier-app/
+├── App.js                 # Point d'entrée — Configuration de la navigation par onglets
+├── LoginScreen.js         # Écran de connexion avec formulaire
+├── WelcomeScreen.js       # Écran d'accueil / bienvenue
+├── app.json               # Configuration Expo
+├── package.json           # Dépendances du projet
+├── assets/                # Images et ressources
+├── components/            # Composants réutilisables (modèle Expo)
+├── app/                   # Dossier Expo Router (non utilisé, point d'entrée : App.js)
+└── README.md              # Ce fichier
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🎨 Design
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+L'application utilise une **palette de couleurs moderne** avec thème sombre :
 
-## Join the community
+| Couleur | Code | Utilisation |
+|---------|------|-------------|
+| Fond | `#0F172A` | Arrière-plan principal |
+| Surface | `#1E293B` | Cartes et composants |
+| Primaire | `#6366F1` | Boutons, éléments d'accent |
+| Primaire clair | `#818CF8` | Liens, onglet actif |
+| Texte | `#F8FAFC` | Texte principal |
+| Texte secondaire | `#94A3B8` | Étiquettes, sous-titres |
 
-Join our community of developers creating universal apps.
+## 📦 Dépendances principales
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+| Package | Version | Description |
+|---------|---------|-------------|
+| react | 19.1.0 | Bibliothèque d'interface utilisateur |
+| react-native | 0.81.5 | Framework mobile |
+| expo | ~54.0.31 | Plateforme Expo |
+| @react-navigation/native | ^7.1.26 | Navigation |
+| @react-navigation/bottom-tabs | ^7.9.0 | Onglets en bas de l'écran |
+
+## 🔧 Configuration
+
+Le point d'entrée de l'application est configuré dans `package.json` :
+
+```json
+{
+  "main": "node_modules/expo/AppEntry.js"
+}
+```
+
+Le fichier `expo/AppEntry.js` charge automatiquement le composant `App` depuis `App.js` à la racine du projet.
+
+## 📝 Écrans
+
+### Écran de connexion (LoginScreen)
+- Formulaire avec champs email et mot de passe
+- Gestion du clavier (`KeyboardAvoidingView`)
+- États visuels des boutons (appui)
+- Liens : mot de passe oublié, création de compte
+
+### Écran de bienvenue (WelcomeScreen)
+- Message de bienvenue personnalisé
+- Carte d'information « Vous êtes connecté »
+- Liste des fonctionnalités de l'application
+
+<img width="1366" height="728" alt="Login - Google Chrome 09_01_2026 19_06_53" src="https://github.com/user-attachments/assets/3b378d25-d872-4ceb-bc41-a49a2ab84d32" />
+<img width="1366" height="728" alt="Login - Google Chrome 09_01_2026 19_07_01" src="https://github.com/user-attachments/assets/78029cf5-911f-4aef-90ed-7d6402881945" />
+
